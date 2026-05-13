@@ -201,13 +201,13 @@ function renderResult(data) {
   const icon = data.type === 'video' ? '🎬' : data.type === 'photo' ? '🖼️' : '🎞️';
   const quality = data.medias?.[0]?.quality || 'HD';
 
-  let downloadLinks = (data.medias || []).map((m, i) => `
-  <button
+ let downloadLinks = (data.medias || []).map((m, i) => `
+  <a
+    href="${API_BASE_URL}/api/download/file?url=${encodeURIComponent(m.url)}"
     class="result-dl-btn"
-    onclick="forceDownload('${m.url}', '${m.ext || 'mp4'}')"
   >
     ⬇ Download ${m.quality || ''}
-  </button>
+  </a>
 `).join('');
 
   if (!downloadLinks) {
