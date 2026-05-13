@@ -16,6 +16,7 @@ const express  = require('express');
 const router   = express.Router();
 const { exec } = require('child_process');
 const util     = require('util');
+const fetch = require('node-fetch');
 
 const execAsync = util.promisify(exec);
 
@@ -177,5 +178,43 @@ router.post('/', async (req, res) => {
     });
   }
 });
+router.get('/file', async (req, res) => {
 
+  try {
+
+    const fileUrl = req.query.url;
+
+    if (!fileUrl) {
+
+      return res.status(400).json({
+        error: 'Missing URL'
+      });
+
+    }
+
+    const response = await fetch(fileUrl);
+
+    res.setHeader(
+      'Content-Disposition',
+      'attachment; filename="reelgrab.mp4"'
+    );
+
+    res.setHeader(
+      'Content-Type',
+      'video/mp4'
+    );
+
+    response.body.pipe(res);
+
+  } catch (err) {
+
+    console.log(err);
+
+    res.status(500).json({
+      error: 'Download failed'
+    });
+
+  }
+
+});
 module.exports = router;
