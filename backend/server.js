@@ -34,25 +34,7 @@ app.use(helmet({
 }));
 
 // CORS – allow only your frontend domain in production
-const allowedOrigins = [
-  'http://localhost:3000',
-  'http://127.0.0.1:5500',   // Live Server (VS Code)
-  'http://localhost:5500',
-  process.env.FRONTEND_URL,  // Set this to your Vercel URL
-].filter(Boolean);
-
-app.use(cors({
-  origin: (origin, callback) => {
-    // Allow requests with no origin (Postman, curl, same-origin)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+app.use(cors());
 
 // ─── General Middleware ────────────────────────────────────
 app.use(express.json({ limit: '10kb' }));   // Limit body size
