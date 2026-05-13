@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReelGrab – Download Instagram Reels Instantly</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Download Instagram Reels, Videos, Photos and IGTV content in HD for free. No login required. Paste the link and download instantly." />
+  <meta name="keywords" content="instagram reels downloader, download instagram video, instagram photo download, IGTV download, reels download free" />
+  <meta name="author" content="ReelGrab" />
+  <meta property="og:title" content="ReelGrab – Download Instagram Reels Instantly" />
+  <meta property="og:description" content="Free HD Instagram Reels & Video Downloader. No login. No limits." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://reelgrab.app" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://reelgrab.app" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Google AdSense Ready (replace with your publisher ID) -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>" />
+</head>
+<body>
+
+<!-- ─── NAVBAR ─────────────────────────────────────────────── -->
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🎬</span>
+      <span class="logo-text">Reel<span class="accent">Grab</span></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="pages/about.html" class="nav-link">About</a>
+      <a href="pages/contact.html" class="nav-link">Contact</a>
+      <a href="pages/privacy.html" class="nav-link">Privacy</a>
+      <a href="pages/terms.html" class="nav-link">Terms</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon sun">☀️</span>
+        <span class="theme-icon moon">🌙</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ─── HERO ───────────────────────────────────────────────── -->
+<section class="hero">
+  <!-- Animated background blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="container hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Free · No Login · HD Quality
+    </div>
+
+    <h1 class="hero-title">
+      Download Instagram<br />
+      <span class="gradient-text">Reels Instantly</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Paste any Instagram link and grab your Reel, Video, Photo, or IGTV in full HD — no account, no watermark, no hassle.
+    </p>
+
+    <!-- Download Card -->
+    <div class="download-card" id="downloadCard">
+      <div class="input-row">
+        <div class="input-wrapper">
+          <span class="input-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </span>
+          <input
+            type="url"
+            id="urlInput"
+            class="url-input"
+            placeholder="Paste Instagram link here…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="paste-btn" id="pasteBtn" title="Paste from clipboard">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+            </svg>
+          </button>
+        </div>
+        <button class="download-btn" id="downloadBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download
+        </button>
+      </div>
+
+      <!-- Error/Status message -->
+      <div class="status-msg" id="statusMsg"></div>
+
+      <!-- Loader -->
+      <div class="loader-bar" id="loaderBar">
+        <div class="loader-progress"></div>
+      </div>
+
+      <!-- Result area -->
+      <div class="result-area" id="resultArea"></div>
+    </div>
+
+    <!-- Trust indicators -->
+    <div class="trust-row">
+      <div class="trust-item">
+        <strong id="downloadCount">2.4M+</strong>
+        <span>Downloads</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <strong>100%</strong>
+        <span>Free</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <strong>HD</strong>
+        <span>Quality</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <strong>0</strong>
+        <span>Login Needed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── AD SLOT (Top) ──────────────────────────────────────── -->
+<div class="ad-slot container" aria-label="Advertisement">
+  <!-- AdSense auto ad or manual banner -->
+  <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXX" data-ad-slot="XXXX" data-ad-format="auto"></ins> -->
+  <div class="ad-placeholder">Advertisement</div>
+</div>
+
+<!-- ─── HOW TO USE ──────────────────────────────────────────── -->
+<section class="section how-to">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag">Simple Steps</p>
+      <h2 class="section-title">How to Download in 3 Steps</h2>
+      <p class="section-sub">Get your Instagram content in seconds — no technical knowledge required.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card" style="--delay:0s">
+        <div class="step-number">01</div>
+        <div class="step-icon">📋</div>
+        <h3>Copy the Link</h3>
+        <p>Open Instagram, tap the <strong>⋯</strong> menu on any Reel or Post, then tap <strong>"Copy Link"</strong>.</p>
+        <div class="step-img-guide">
+          <div class="mock-phone">
+            <div class="mock-screen">
+              <div class="mock-post"></div>
+              <div class="mock-menu">
+                <div class="mock-menu-item active">📋 Copy Link</div>
+                <div class="mock-menu-item">🔗 Share</div>
+                <div class="mock-menu-item">❌ Cancel</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card" style="--delay:0.1s">
+        <div class="step-number">02</div>
+        <div class="step-icon">📌</div>
+        <h3>Paste the URL</h3>
+        <p>Come back here, paste the link in the input box above, or tap the <strong>📋 Paste</strong> button.</p>
+        <div class="step-img-guide">
+          <div class="mock-input-demo">
+            <div class="mock-url-bar">https://www.instagram.com/reel/…</div>
+            <div class="mock-cursor blink"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card" style="--delay:0.2s">
+        <div class="step-number">03</div>
+        <div class="step-icon">⬇️</div>
+        <h3>Download & Enjoy</h3>
+        <p>Hit the <strong>Download</strong> button. Your file will be ready in moments — tap to save.</p>
+        <div class="step-img-guide">
+          <div class="mock-download-demo">
+            <div class="mock-progress-bar">
+              <div class="mock-progress-fill"></div>
+            </div>
+            <div class="mock-dl-label">Downloading… 100%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURES ───────────────────────────────────────────── -->
+<section class="section features">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag">Why ReelGrab</p>
+      <h2 class="section-title">Everything You Need</h2>
+      <p class="section-sub">Built for speed, privacy, and simplicity.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feat-icon">🎥</div>
+        <h3>HD Reel Downloads</h3>
+        <p>Download Instagram Reels in the highest available resolution — crisp, clear, full quality.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">🔓</div>
+        <h3>No Login Required</h3>
+        <p>We never ask for your Instagram credentials. Zero sign-up, zero data collection.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">⚡</div>
+        <h3>Lightning Fast</h3>
+        <p>Our servers process your request in under 3 seconds. Download starts immediately.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">📱</div>
+        <h3>Mobile Friendly</h3>
+        <p>Works perfectly on any device — phone, tablet, or desktop. No app install needed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">♾️</div>
+        <h3>Unlimited Downloads</h3>
+        <p>No daily limits, no paywalls. Download as many reels and videos as you want, free.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">🖼️</div>
+        <h3>Photos & IGTV</h3>
+        <p>Beyond Reels — download single photos, carousels, Stories, and long-form IGTV videos.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">🚫</div>
+        <h3>No Watermarks</h3>
+        <p>Get the original file exactly as posted — no branding, no overlays, no compression.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon">🔒</div>
+        <h3>Private & Secure</h3>
+        <p>Your links are processed server-side and never stored. Your privacy is our priority.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── AD SLOT (Middle) ───────────────────────────────────── -->
+<div class="ad-slot container">
+  <div class="ad-placeholder">Advertisement</div>
+</div>
+
+<!-- ─── SUPPORTED CONTENT ─────────────────────────────────── -->
+<section class="section supported">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag">Supported</p>
+      <h2 class="section-title">What Can You Download?</h2>
+    </div>
+    <div class="content-types">
+      <div class="content-type">
+        <span class="ct-emoji">🎬</span>
+        <strong>Reels</strong>
+        <span class="ct-badge">Popular</span>
+      </div>
+      <div class="content-type">
+        <span class="ct-emoji">📹</span>
+        <strong>Videos</strong>
+      </div>
+      <div class="content-type">
+        <span class="ct-emoji">🖼️</span>
+        <strong>Photos</strong>
+      </div>
+      <div class="content-type">
+        <span class="ct-emoji">🎞️</span>
+        <strong>Carousels</strong>
+      </div>
+      <div class="content-type">
+        <span class="ct-emoji">📺</span>
+        <strong>IGTV</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ────────────────────────────────────────────────── -->
+<section class="section faq">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag">FAQ</p>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <button class="faq-question">
+          Is ReelGrab free to use?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes, 100% free. No hidden charges, no premium plans, no credit card required. You can download unlimited content without paying a cent.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Do I need to create an account?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely not. ReelGrab requires zero sign-up. Just paste the link and download. We never ask for your Instagram credentials either.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I download private Instagram content?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>No. ReelGrab can only download publicly available content. Private accounts and content require authorization from the account owner, which we do not bypass.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What video quality will I get?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>We download the highest resolution available from Instagram's servers — typically Full HD (1080p) for videos and Reels. Quality depends on what was originally uploaded.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is it legal to download Instagram content?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>Downloading content for personal offline viewing is generally acceptable, but redistributing others' content without permission may violate copyright law. Always respect creators and Instagram's Terms of Service.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Why isn't my link working?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>Make sure the content is public, and the link is complete (starting with https://www.instagram.com/). Links to private accounts or Stories that have expired will not work.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Does ReelGrab store my downloads?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>No. We process the link in real-time and generate a temporary download link. We do not store any media files on our servers beyond the brief processing window.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DOWNLOAD HISTORY ───────────────────────────────────── -->
+<section class="section history-section" id="historySection">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag">Your Session</p>
+      <h2 class="section-title">Download History</h2>
+      <p class="section-sub">Your recent downloads this session (cleared when you close the tab).</p>
+    </div>
+    <div class="history-list" id="historyList">
+      <div class="history-empty">
+        <span>📭</span>
+        <p>No downloads yet. Paste a link above to get started!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── AD SLOT (Bottom) ───────────────────────────────────── -->
+<div class="ad-slot container">
+  <div class="ad-placeholder">Advertisement</div>
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🎬</span>
+        <span class="logo-text">Reel<span class="accent">Grab</span></span>
+      </a>
+      <p>The fastest, free, no-login Instagram downloader. Built for creators and fans alike.</p>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="index.html">Home</a>
+        <a href="pages/about.html">About</a>
+        <a href="pages/contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="pages/privacy.html">Privacy Policy</a>
+        <a href="pages/terms.html">Terms & Conditions</a>
+      </div>
+      <div class="footer-col">
+        <h4>Download</h4>
+        <a href="#">Instagram Reels</a>
+        <a href="#">Instagram Videos</a>
+        <a href="#">Instagram Photos</a>
+        <a href="#">IGTV Videos</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© <span id="year"></span> ReelGrab. Not affiliated with Instagram or Meta Platforms.</p>
+      <p class="footer-disclaimer">For personal use only. Respect copyright and creator rights.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── BACK TO TOP ────────────────────────────────────────── -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<!-- ─── SCRIPTS ────────────────────────────────────────────── -->
+<script src="assets/js/main.js"></script>
+</body>
+</html>
