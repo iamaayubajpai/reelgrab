@@ -216,12 +216,32 @@ function renderResult(data) {
 
   resultArea.innerHTML = `
     <div class="result-card">
-      <div class="result-thumb">
-        ${data.thumbnail
-          ? `<img src="${data.thumbnail}" alt="Media thumbnail" loading="lazy" />`
-          : `<span>${icon}</span>`
-        }
-      </div>
+      resultArea.innerHTML = `
+  <div class="result-card">
+
+    <div class="result-info">
+      <h4>${data.title || 'Instagram Media'}</h4>
+
+      <p>
+        By @${data.author || 'unknown'}
+        · ${data.type || 'Media'}
+        · ${quality}
+      </p>
+    </div>
+
+    <div
+      style="
+        display:flex;
+        gap:8px;
+        flex-wrap:wrap;
+        justify-content:flex-end;
+      "
+    >
+      ${downloadLinks}
+    </div>
+
+  </div>
+`;
       <div class="result-info">
         <h4>${data.title || 'Instagram ' + (data.type || 'Media')}</h4>
         <p>By @${data.author || 'unknown'} · ${data.type || 'Media'} · ${quality}</p>
