@@ -7,7 +7,7 @@
  */
 
 // ─── CONFIG ───────────────────────────────────────────────
-const API_BASE_URL = 'https://reelgrab-gg8q.onrender.com/'; // Change to your deployed backend URL
+const API_BASE_URL = 'https://reelgrab-gg8q.onrender.com'; // Change to your deployed backend URL
 
 // ─── DOM REFS ─────────────────────────────────────────────
 const themeToggle  = document.getElementById('themeToggle');
