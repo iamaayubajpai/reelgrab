@@ -202,10 +202,13 @@ function renderResult(data) {
   const quality = data.medias?.[0]?.quality || 'HD';
 
   let downloadLinks = (data.medias || []).map((m, i) => `
-    <a href="${m.url}" download class="result-dl-btn" target="_blank" rel="noopener">
-      ⬇ ${m.quality || 'Download'} ${m.ext ? '.' + m.ext : ''}
-    </a>
-  `).join('');
+  <button
+    class="result-dl-btn"
+    onclick="forceDownload('${m.url}', '${m.ext || 'mp4'}')"
+  >
+    ⬇ Download ${m.quality || ''}
+  </button>
+`).join('');
 
   if (!downloadLinks) {
     downloadLinks = `<a href="${data.url || '#'}" download class="result-dl-btn" target="_blank" rel="noopener">⬇ Download</a>`;
